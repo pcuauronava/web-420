@@ -1,0 +1,30 @@
+{
+    "findAllComposers":
+    [
+        {
+            "composerID":104222,
+            "firstName":"Wolfgang",
+            "lastName":"Mozart"
+        },
+        {
+            "composerID":122342,
+            "firstName":"Ludwig",
+            "lastName":"van Beethoven"
+        },
+        {
+            "composerID":101110,
+            "firstName":"Johann",
+            "lastName":"Bach"
+        },
+        {
+            "composerID":130320,
+            "firstName":"Frederic",
+            "lastName":"Chopin"
+        },
+        {
+            "composerID":142356,
+            "firstName":"Richard",
+            "lastName":"Wagner"
+        }
+    ]
+}
