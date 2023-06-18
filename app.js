@@ -24,7 +24,7 @@ app.set("port", process.env.PORT || 3000);
 
 
 const conn =
-"mongodb+srv://web420_admin:aslan123@bellevueuniversity.5jww2it.mongodb.net/web340DB?retryWrites=true&w=majority";
+"mongodb+srv://web420_admin:aslan123@bellevueuniversity.5jww2it.mongodb.net/web420DB?retryWrites=true&w=majority";
 mongoose
   .connect(conn, {
     useNewUrlParser: true,
