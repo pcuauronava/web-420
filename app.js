@@ -14,6 +14,8 @@ const http = require("http");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 const mongoose = require("mongoose");
+const composerAPI = require("./routes/cuauro-composer-routes");
+
 
 //app variable
 const app = express();
@@ -24,7 +26,7 @@ app.set("port", process.env.PORT || 3000);
 
 
 const conn =
-"mongodb+srv://web420_admin:aslan123@bellevueuniversity.5jww2it.mongodb.net/web420DB?retryWrites=true&w=majority";
+"mongodb+srv://web420_user:s3cret@bellevueuniversity.5jww2it.mongodb.net/web420DB?retryWrites=true&w=majority";
 mongoose
   .connect(conn, {
     useNewUrlParser: true,
@@ -57,6 +59,7 @@ const openapiSpecification = swaggerJsdoc(options);
 
 // wire openapiSpecification to app variable
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+app.use("/api", composerAPI);
 
 //creating our http server on the port number
 http.createServer(app).listen(app.get("port"), function () {

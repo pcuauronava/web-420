@@ -12,7 +12,7 @@
 const express = require('express');
 const router = express.Router();
 //remember the ../ before the path to return a subfolder
-const Composer = require('../models/cuauro-composer.js');
+const Composer = require('../models/cuauro-composer');
 
 /**
  * findAllComposers
@@ -78,7 +78,7 @@ router.get('/composers', async (req, res) => {
  */
 router.get('/composers/:id', async (req, res) => {
     try {
-        Composer.findOne({ '_id': req.params.id }, function (err, composer) {
+        Composers.findOne({ '_id': req.params.id }, function (err, composer) {
             if (err) {
                 console.log(err);
                 res.status(500).send({

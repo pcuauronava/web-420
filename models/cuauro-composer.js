@@ -1,5 +1,3 @@
-const { Mongoose } = require("mongoose");
-
 /*
 ==============================================================================
 ; Title: cuauro-composer.js Web-420
@@ -11,7 +9,7 @@ const { Mongoose } = require("mongoose");
 =================================================================================================================
 */
 const mongoose = require("mongoose");
-const Schema = require("mongoose.Schema");
+const Schema = mongoose.Schema;
 const composerSchema = new Schema({
     // don't forget String is spelled with Capital S
     // in this case the values can not be unique because is an appointment!
