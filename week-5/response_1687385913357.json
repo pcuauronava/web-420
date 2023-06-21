@@ -1,0 +1,20 @@
+{
+  "_id": "6493773937a89f346ce4199a",
+  "firstName": "string",
+  "lastName": "string",
+  "roles": [
+    {
+      "_id": "6493773937a89f346ce4199b",
+      "text": "string"
+    }
+  ],
+  "dependents": [
+    {
+      "_id": "6493773937a89f346ce4199c",
+      "firstName": "string",
+      "lastName": "string"
+    }
+  ],
+  "birthDate": "string",
+  "__v": 0
+}

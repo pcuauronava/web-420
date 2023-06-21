@@ -33,21 +33,21 @@ const Person = require('../models/cuauro-person.js');
  */
 router.get('/persons', async (req, res) => {
     try {
-        Person.find({}, function (err, persons) {
+        Person.find({}, function (err, person) {
             if (err) {
                 console.log(err);
                 res.status(501).send({
-                    'message': `MongoDB Exception: ${err}`
+                    message: `MongoDB Exception: ${err}`
                 })
             } else {
-                console.log(persons);
-                res.json(persons);
+                console.log(person);
+                res.json(person);
             }
         })
     } catch (e) {
         console.log(e);
         res.status(500).send({
-            'message': `Server Exception: ${e.message}`,
+            message: `Server Exception: ${e.message}`,
         });
     }
 });

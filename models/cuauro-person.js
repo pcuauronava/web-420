@@ -8,6 +8,7 @@
 ; Description: Model for web API
 =================================================================================================================
 */
+"use-strict";
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -15,23 +16,21 @@ const Schema = mongoose.Schema;
  * role schema
  */
 const roleSchema = new Schema({
-    // don't forget String is spelled with Capital S
-    // in this case the values can not be unique because is an appointment!
-    text: { type: String, required:true },
+    text: { type: String },
 });
 /**
  * dependent schema
  */
 const dependentSchema = new Schema({
-    firstName: { type: String, required:true },
-    lastName: { type: String, required:true  }
+    firstName: { type: String },
+    lastName: { type: String  }
 });
 /**
  * person schema
  */
 const personSchema = new Schema({
-    firstName: { type: String, required:true },
-    lastName: { type: String, required:true  },
+    firstName: { type: String },
+    lastName: { type: String },
     roles: [roleSchema],
     //roleSchema
     dependents: [dependentSchema],
