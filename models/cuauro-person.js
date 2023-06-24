@@ -36,6 +36,8 @@ const personSchema = new Schema({
     dependents: [dependentSchema],
     //dependentSchema
     birthDate: { type: String },
-});
+    // if this last line is not included explicitly in the schema
+    // mongoose changes the name of the collection to plural, "people"
+}, {collection: 'persons' });
 //export the model
 module.exports = mongoose.model("Person",personSchema);
