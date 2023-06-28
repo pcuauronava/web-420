@@ -16,6 +16,7 @@ const swaggerJsdoc = require("swagger-jsdoc");
 const mongoose = require("mongoose");
 const composerAPI = require("./routes/cuauro-composer-routes");
 const personAPI = require("./routes/cuauro-person-routes");
+const userAPI = require("./routes/cuauro-session-routes.js");
 
 //app variable
 const app = express();
@@ -61,6 +62,8 @@ const openapiSpecification = swaggerJsdoc(options);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use("/api", composerAPI);
 app.use("/api", personAPI);
+//added for Person
+app.use("/api", userAPI);
 
 //creating our http server on the port number
 http.createServer(app).listen(app.get("port"), function () {
