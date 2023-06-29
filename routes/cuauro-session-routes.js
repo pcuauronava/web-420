@@ -25,7 +25,6 @@ const saltRounds = 10;
  *  post:
  *      tags:
  *          - User
- *      name: signup
  *      description: API for signup process
  *      summary: requires the data for signup
  *      requestBody:
@@ -60,7 +59,7 @@ router.post('/signup', async (req, res) => {
         const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
         const newRegisteredUser = {
             userName: req.body.userName,
-            password: req.body.password,
+            password: hashedPassword,
             emailAddress: req.body.emailAddress,
         };
     
@@ -114,41 +113,48 @@ router.post('/signup', async (req, res) => {
  *        '501':
  *         description: MongoDB Exception   
  */
-router.post("/login", async (req,res)=> {
-    try {
-        User.findOne({ userName:req.body.userName }, function (err, user) {
-            if(err) {
-                console.log(err);
-                res.status(501).send({
-                    message:`MongoDB Exception: ${err}`,
-                });
-            } else {
-                console.log(user);
-                if (user) {
-                    let passwordIsValid = bcrypt.compareSync(
-                        req.body.password,
-                        user.password
-                    );
 
-                    if (passwordIsValid) {
-                        console.log("User logged in successfully");
-                        res.status(200).send({
-                            message: "User logged in successfully",
-                        });
-                    } else {
-                        console.log("Invalid username and/or password combination");
-                        res.status(401).send({
-                            message: `Invalid username and/or password combination`,
-                        });
-                    }
-                }
+router.post("/login", async (req, res) => {
+    try {
+      User.findOne({ userName: req.body.userName }, function (err, user) {
+        if (err) {
+          console.log(err);
+          res.status(501).send({
+            message: `MongoDB Exception: ${err}`,
+          });
+        } else {
+          console.log(user);
+          if (user) {
+            let passwordIsValid = bcrypt.compareSync(
+              req.body.password,
+              user.password,
+            );
+  
+            if (passwordIsValid) {
+              console.log("User logged in");
+              res.status(200).send({
+                message: "User logged in",
+              });
+            } else {
+              console.log("Invalid username and/or password combination");
+              res.status(401).send({
+                message: `Invalid username and/or password combination`,
+              });
             }
-        });
+          }
+          if (!user) {
+            console.log("Invalid username and/or password combination");
+            res.status(401).send({
+              message: `Invalid username and/or password combination`,
+            });
+          }
+        }
+      });
     } catch (e) {
-        console.log(e);
-        res.status(500).send({
-            message: `Server Exception: ${e}`,
-        });
+      console.log(e);
+      res.status(500).send({
+        message: `Server Exception: ${e}`,
+      });
     }
-});
+  });
 module.exports = router;

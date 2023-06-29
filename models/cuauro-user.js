@@ -16,9 +16,9 @@ const Schema = mongoose.Schema;
  * role user
  */
 let userSchema = new Schema({
-    userName: { type: String , required: true },
-    password: { type: String , required: true },
-    emailAddress: { type: String }
+    userName: { type: String },
+    password: { type: String },
+    emailAddress: { type: String },
 });
 //export the model
 module.exports = mongoose.model("User",userSchema);
