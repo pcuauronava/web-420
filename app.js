@@ -4,7 +4,7 @@
 ; Author: Patrick Cuauro
 ; Bellevue University
 ; Date: 05 28 2023
-;
+; Description: App for API testing
 =================================================================================================================
 */
 "use-strict";
@@ -17,6 +17,7 @@ const mongoose = require("mongoose");
 const composerAPI = require("./routes/cuauro-composer-routes");
 const personAPI = require("./routes/cuauro-person-routes");
 const userAPI = require("./routes/cuauro-session-routes.js");
+const customerAPI = require("./routes/cuauro-node-shopper-routes");
 
 //app variable
 const app = express();
@@ -64,6 +65,8 @@ app.use("/api", composerAPI);
 app.use("/api", personAPI);
 //added for Person
 app.use("/api", userAPI);
+//added for shopper - customer
+app.use("/api", customerAPI);
 
 //creating our http server on the port number
 http.createServer(app).listen(app.get("port"), function () {

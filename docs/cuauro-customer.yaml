@@ -1,0 +1,107 @@
+openapi: 3.0.0
+info:
+  /api/customers:
+   post:
+       tags:
+           - Customers
+       description: API for creating a new Customer and adding it to the MongoDB database
+       summary: Creates a new customer document
+       requestBody:
+           description: Customer information
+           content:
+               application/json:
+                   schema:
+                       required:
+                           - firstName
+                           - lastName
+                           - userName
+                       properties:
+                           firstName:
+                               type: string
+                           lastName:
+                               type: string
+                           userName:
+                               type: string
+       responses:
+           '200':
+               description: Customer added to MongoDB
+           '500':
+               description: Server Exception
+           '501':
+               description: MongoDB Exception
+
+# createInvoiceByUserName
+  /api/customers/{userName}/invoices:
+    post:
+       tags:
+           - Customers
+       name: createInvoiceByUserName
+       description: API for creating an invoice per userName and adding it to the MongoDB database
+       summary: creates a new invoice document
+       parameters:
+        - name: username
+            in: path
+                 required:true
+                   description:
+                   schema:
+                     type: string
+       requestBody:
+           description: Invoice information
+           content:
+               application/json:
+                   schema:
+                       required:
+                           - subtotal
+                           - tax
+                           - dateCreated
+                           - dateShipped
+                           - lineItems
+                       properties:
+                           subtotal:
+                               type: string
+                           tax:
+                               type: string
+                           dateCreated:
+                               type: string
+                           dateShipped:
+                               type: string
+                           lineItems:
+                               type: array
+                               items:
+                                   type: object
+                                   properties:
+                                       name: 
+                                           type: string
+                                       price:
+                                           type: string
+                                       quantity:
+                                           type: string
+       responses:
+           '200':
+               description: Customer added to MongoDB
+           '500':
+               description: Server Exception
+           '501':
+               description: MongoDB Exception
+
+/api/customers/{userName}/invoices:
+   get:
+       tags:
+           - Customers
+       description: API for returning all the invoices per userName
+       summary: returns all the invoices using the username
+       parameters:
+          - name: username
+               in: path
+               required: true
+               description: Customer username
+               schema:
+                   type: string
+       responses:
+           '200':
+               description: Customer added to MongoDB
+           '500':
+               description: Server Exception
+           '501':
+               description: MongoDB Exception
+ /
