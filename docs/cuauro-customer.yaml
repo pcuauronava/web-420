@@ -91,7 +91,7 @@ info:
        description: API for returning all the invoices per userName
        summary: returns all the invoices using the username
        parameters:
-          - name: username
+            - name: username
                in: path
                required: true
                description: Customer username
@@ -104,4 +104,3 @@ info:
                description: Server Exception
            '501':
                description: MongoDB Exception
- /

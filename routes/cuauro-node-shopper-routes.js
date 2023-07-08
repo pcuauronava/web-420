@@ -78,7 +78,7 @@ router.post("/customers", async (req, res) => {
 /**
  * createInvoiceByUserName
  * @openapi
- * /api/customers/{username}/invoices:
+ * /api/customers/{userName}/invoices:
  *   post:
  *     tags:
  *       - Customers
@@ -86,7 +86,7 @@ router.post("/customers", async (req, res) => {
  *     description: Create a new invoice for the username provided
  *     summary: create an invoice for the username
  *     parameters:
- *       - name: username
+ *       - name: userName
  *         in: path
  *         required: true
  *         description:
@@ -133,10 +133,10 @@ router.post("/customers", async (req, res) => {
  */
 
 console.log("test1");
-router.post("/customers/:username/invoices", async (req, res) => {
+router.post("/customers/:userName/invoices", async (req, res) => {
     try {
         await Customer.findOne(
-            { username: req.params.username },
+            { userName: req.params.userName },
             function (err, customer) {
                 let newInvoice = {
                     subtotal: req.body.subtotal,
@@ -175,14 +175,14 @@ router.post("/customers/:username/invoices", async (req, res) => {
 /**
  * findAllInvoicesByUserName
  * @openapi
- * /api/customers/{username}/invoices:
+ * /api/customers/{userName}/invoices:
  *   get:
  *     tags:
  *       - Customers
  *     description:  API for looking up an invoice
  *     summary: looks up an invoice
  *     parameters:
- *       - name: username
+ *       - name: userName
  *         in: path
  *         required: true
  *         description: Customer username
@@ -197,7 +197,7 @@ router.post("/customers/:username/invoices", async (req, res) => {
  *         description: MongoDB Exception
  */
 
-router.get('/customers', async (req, res) => {
+router.get('/customers/:userName/invoices', async (req, res) => {
     try {
         Customer.findOne(
             { userName: req.params.userName },
