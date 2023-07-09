@@ -132,7 +132,6 @@ router.post("/customers", async (req, res) => {
  *         description: MongoDB Exception
  */
 
-console.log("test1");
 router.post("/customers/:userName/invoices", async (req, res) => {
     try {
         await Customer.findOne(
