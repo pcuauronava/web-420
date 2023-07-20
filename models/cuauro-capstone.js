@@ -1,11 +1,11 @@
 /*
 ==============================================================================
-; Title: cuauro-composer.js Web-420
+; Title: cuauro-capstone.js Web-420
 ; Author: Richard Krasso
 ; Modified by: Patrick Cuauro
 ; Bellevue University
 ; Date: 07 18 2023
-; Description: Team - capstone project - composer model
+; Description: Team model - capstone project 
 =================================================================================================================
 */
 const mongoose = require("mongoose"); 
