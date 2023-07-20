@@ -1,12 +1,16 @@
 openapi: 3.0.0
 info:
+    title: Customer API
+    version: 1.0.0
+# createCustomer
+paths:
   /api/customers:
-   post:
-       tags:
-           - Customers
-       description: API for creating a new Customer and adding it to the MongoDB database
-       summary: Creates a new customer document
-       requestBody:
+  post:
+    tags:
+        - Customers
+    description: API for creating a new Customer and adding it to the MongoDB database
+    summary: Creates a new customer document
+    requestBody:
            description: Customer information
            content:
                application/json:
@@ -22,13 +26,13 @@ info:
                                type: string
                            userName:
                                type: string
-       responses:
-           '200':
-               description: Customer added to MongoDB
-           '500':
-               description: Server Exception
-           '501':
-               description: MongoDB Exception
+    responses:
+        '200':
+            description: Customer added to MongoDB
+        '500':
+            description: Server Exception
+        '501':
+            description: MongoDB Exception
 
 # createInvoiceByUserName
   /api/customers/{userName}/invoices:

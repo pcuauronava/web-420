@@ -18,7 +18,7 @@ const composerAPI = require("./routes/cuauro-composer-routes");
 const personAPI = require("./routes/cuauro-person-routes");
 const userAPI = require("./routes/cuauro-session-routes.js");
 const customerAPI = require("./routes/cuauro-node-shopper-routes");
-
+const teamsAPI = require("./routes/cuauro-capstone-routes.js");
 //app variable
 const app = express();
 
@@ -67,6 +67,8 @@ app.use("/api", personAPI);
 app.use("/api", userAPI);
 //added for shopper - customer
 app.use("/api", customerAPI);
+//added for team - capstone
+app.use("/api", teamsAPI);
 
 //creating our http server on the port number
 http.createServer(app).listen(app.get("port"), function () {
